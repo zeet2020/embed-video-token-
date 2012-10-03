@@ -1,8 +1,7 @@
 <?php
-   // hook_token_list 
 
+// hook token list implementation
 function emvideo_token_list($type = 'all') {
-   //drupal_set_message($type);
   if ($type == 'field' || $type == 'all') {
     $tokens = array();
     $tokens['emvideo']['emvideo-url'] = t('embed-url');
@@ -20,10 +19,9 @@ function emvideo_token_list($type = 'all') {
   }
 }
 
-
+// hook token values implementation
 function emvideo_token_values($type, $object = NULL) {
   $tokens = array();
-   //drupal_set_message($object);
  if ($type == 'field' && isset($object[0]['embed'])) {
     $item = $object[0];
     $tokens['emvideo-url']  = $item['embed'];
@@ -35,7 +33,7 @@ function emvideo_token_values($type, $object = NULL) {
     $tokens['emvideo-duration'] = $item['duration'];
     $tokens['emvideo-title'] = $item['title'];
     $tokens['emvideo-description'] = $item['description'];
-    $tokens['emvideo-data-thumbnail'] = $item['data']['thumbnail'];
+    $tokens['emvideo-data-thumbnail'] = $item['data']['thumbnail']['url'];
     $tokens['emvideo-data-emthumb-fid'] = $item['data']['emthumb']['fid'];
     $tokens['emvideo-data-emthmub-filemime'] = $item['data']['emthumb']['filemime'];
     $tokens['emvideo-data-emthumb-filename'] = $item['data']['emthumb']['filename'];
